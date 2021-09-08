@@ -8,8 +8,9 @@ namespace Buran.Core.MvcLibrary.Extenders
     {
         public static HtmlString FileBasicUploader(this IHtmlHelper html, string name, string title, string uploadUrl,
             string cssClass = "btnFileUploader", bool showImg = false, string imgPath = null,
-            int labelCol = 3, int editorCol = 9, bool template = true)
+            int labelCol = 3, int editorCol = 9, bool template = true, bool multiple=false)
         {
+            var multipleProp = multiple ? "multiple" : "";
             var img = showImg ? $"<img id='img{name}' src='{imgPath}' class='img-thumbnail img-fileupload'><br>" : "";
             if (template)
             {
@@ -20,7 +21,7 @@ namespace Buran.Core.MvcLibrary.Extenders
                     <button type='button' class='{cssClass} btn btn-sm btn-default' id='btn{name}'>
                         <i class='fa fa-upload'></i> {UI.Upload}
                     </button>
-                    <input id='file{name}' type='file' name='file{name}' class='fileinput d-none' data-url='{uploadUrl}'>
+                    <input id='file{name}' type='file' name='file{name}' class='fileinput d-none' data-url='{uploadUrl}' {multipleProp}>
                 </div>
             </div>";
                 return new HtmlString(div);
@@ -32,7 +33,7 @@ namespace Buran.Core.MvcLibrary.Extenders
                 <button type='button' class='{cssClass} btn btn-sm btn-default' id='btn{name}'>
                     <i class='fa fa-upload'></i> {UI.Upload}
                 </button>
-                <input id='file{name}' type='file' name='file{name}' class='fileinput d-none' data-url='{uploadUrl}'>";
+                <input id='file{name}' type='file' name='file{name}' class='fileinput d-none' data-url='{uploadUrl}' {multipleProp}>";
                 return new HtmlString(div);
             }
         }
