@@ -481,17 +481,18 @@ namespace Buran.Core.MvcLibrary.Grid
                 if (field.Width > 0)
                     attr += $" width='{field.Width}'";
 
+                var cssClass = field.CellCssClass;
                 if (field.CellBackFormatter != null && !field.CellBackCssClassFunc.IsEmpty())
                 {
                     var obj = Activator.CreateInstance(field.CellBackFormatter);
                     var a = field.CellBackFormatter.GetMethod(field.CellBackCssClassFunc);
                     var sonuc = (string)a.Invoke(obj, new dynamic[1] { item });
-                    if (!field.CellCssClass.IsEmpty())
-                        field.CellCssClass += " ";
-                    field.CellCssClass += sonuc;
+                    if (!cssClass.IsEmpty())
+                        cssClass += " ";
+                    cssClass += sonuc;
                 }
-                if (!field.CellCssClass.IsEmpty())
-                    attr += $" class='{field.CellCssClass}'";
+                if (!cssClass.IsEmpty())
+                    attr += $" class='{cssClass}'";
 
                 builder.AppendHtml($"<td{attr}>");
                 if (field.ObjectValueFunction.IsEmpty() || field.ObjectValueConverter == null)
