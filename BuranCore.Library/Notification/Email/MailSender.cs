@@ -1,4 +1,5 @@
 ﻿using Buran.Core.Library.Utils;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
@@ -41,6 +42,17 @@ namespace Buran.Core.Library.Mail
             bool enableSsl = false,
             Attachment attachment = null)
         {
+            Send(to, bcc, subject, body, emailFrom, fromDisplay, host, port, userName, password, enableSsl,
+                attachment != null ? new List<Attachment> { attachment } : null
+            );
+        }
+
+        public void Send(string to, string bcc, string subject, string body,
+            string emailFrom = null, string fromDisplay = null,
+            string host = null, int port = 0, string userName = null, string password = null,
+            bool enableSsl = false,
+            List<Attachment> attachment = null)
+        {
             var mail = new MailMessage
             {
                 Subject = subject,
@@ -49,31 +61,22 @@ namespace Buran.Core.Library.Mail
                 BodyEncoding = Encoding.UTF8,
                 SubjectEncoding = Encoding.UTF8,
             };
-
-            if (!string.IsNullOrWhiteSpace(emailFrom) && !string.IsNullOrWhiteSpace(fromDisplay))
-            {
+            if (!emailFrom.IsEmpty() && !fromDisplay.IsEmpty())
                 mail.From = new MailAddress(emailFrom, fromDisplay);
-            }
-            else if (!string.IsNullOrWhiteSpace(emailFrom))
-            {
+            else if (!emailFrom.IsEmpty())
                 mail.From = new MailAddress(emailFrom);
-            }
 
             if (to.Contains(";"))
             {
                 var sendMailAdressSplitted = to.Split(';');
                 foreach (var item in sendMailAdressSplitted)
                 {
-                    if (item != null && !string.IsNullOrWhiteSpace(item))
-                    {
+                    if (item != null && !item.IsEmpty())
                         mail.To.Add(item);
-                    }
                 }
             }
             else
-            {
                 mail.To.Add(to);
-            }
 
             if (!bcc.IsEmpty())
             {
@@ -82,21 +85,20 @@ namespace Buran.Core.Library.Mail
                     var sendMailAdressSplitted = bcc.Split(';');
                     foreach (var item in sendMailAdressSplitted)
                     {
-                        if (item != null && !string.IsNullOrWhiteSpace(item))
-                        {
+                        if (item != null && !item.IsEmpty())
                             mail.Bcc.Add(item);
-                        }
                     }
                 }
                 else
-                {
                     mail.Bcc.Add(bcc);
-                }
             }
 
             if (attachment != null)
             {
-                mail.Attachments.Add(attachment);
+                foreach (var a in attachment)
+                {
+                    mail.Attachments.Add(a);
+                }
             }
 
             var sender = GetSmtpClient(host, port, userName, password, enableSsl);
