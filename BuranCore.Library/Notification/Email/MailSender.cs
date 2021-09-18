@@ -42,16 +42,15 @@ namespace Buran.Core.Library.Mail
             bool enableSsl = false,
             Attachment attachment = null)
         {
-            Send(to, bcc, subject, body, emailFrom, fromDisplay, host, port, userName, password, enableSsl,
-                attachment != null ? new List<Attachment> { attachment } : null
+            Send(to, bcc, subject, body, attachment != null ? new List<Attachment> { attachment } : null,
+                emailFrom, fromDisplay, host, port, userName, password, enableSsl
             );
         }
 
         public void Send(string to, string bcc, string subject, string body,
-            string emailFrom = null, string fromDisplay = null,
+            List<Attachment> attachmentList, string emailFrom = null, string fromDisplay = null,
             string host = null, int port = 0, string userName = null, string password = null,
-            bool enableSsl = false,
-            List<Attachment> attachment = null)
+            bool enableSsl = false)
         {
             var mail = new MailMessage
             {
@@ -93,9 +92,9 @@ namespace Buran.Core.Library.Mail
                     mail.Bcc.Add(bcc);
             }
 
-            if (attachment != null)
+            if (attachmentList != null)
             {
-                foreach (var a in attachment)
+                foreach (var a in attachmentList)
                 {
                     mail.Attachments.Add(a);
                 }
