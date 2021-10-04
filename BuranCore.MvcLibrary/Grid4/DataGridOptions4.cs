@@ -14,7 +14,7 @@ namespace Buran.Core.MvcLibrary.Grid4
 
             var popupEditorCss = "fancybox fancybox.iframe";
 
-            CssTable = "dataGrid table table-responsive-sm table-responsive-md table-bordered";
+            CssTable = "dataGrid table table-responsive table-striped table-bordered";
             EmptyData = "<div>EMPTY RESULT</div>";
 
             ShowHeader = true;
