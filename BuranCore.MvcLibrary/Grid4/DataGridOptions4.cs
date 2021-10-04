@@ -11,10 +11,9 @@ namespace Buran.Core.MvcLibrary.Grid4
         public DataGridOptions4()
         {
             TableId = "";
-
             var popupEditorCss = "fancybox fancybox.iframe";
 
-            CssTable = "dataGrid table table-responsive table-striped table-bordered";
+            CssTable = "dataGrid table table-striped table-bordered";
             EmptyData = "<div>EMPTY RESULT</div>";
 
             ShowHeader = true;
@@ -71,6 +70,8 @@ namespace Buran.Core.MvcLibrary.Grid4
             PagerLocation = PagerLocationTypes.Bottom;
 
             DefaultSorting = true;
+
+            Responsive = true;
         }
 
         public string CssTable { get; set; }
@@ -148,5 +149,8 @@ namespace Buran.Core.MvcLibrary.Grid4
         public List<int> PageSizeList { get; set; }
         public int DefaultPageSize { get; set; }
         public PagerLocationTypes PagerLocation { get; set; }
+
+
+        public bool Responsive { get; set; }
     }
 }

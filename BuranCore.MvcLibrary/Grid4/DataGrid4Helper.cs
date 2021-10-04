@@ -137,16 +137,19 @@ namespace Buran.Core.MvcLibrary.Grid4
                     writer.AppendHtmlLine(pager);
                 }
             }
-            writer.AppendHtmlLine($"<div id='dataGrid-{option.GridDiv}' data-refreshurl='{_refreshUrl}'> ");
+
+            var cssDiv = string.Empty;
+            if (option.Responsive)
+                cssDiv = $" class=\"table-responsive\"";
+            writer.AppendHtmlLine($"<div id='dataGrid-{option.GridDiv}' {cssDiv} data-refreshurl='{_refreshUrl}'> ");
+
             var cssTable = string.Empty;
             if (!option.CssTable.IsEmpty())
                 cssTable = $" class=\"{option.CssTable}\"";
             var idTable = string.Empty;
             if (!option.TableId.IsEmpty())
                 idTable = $" id=\"{option.TableId}\"";
-
             writer.AppendHtmlLine(RenderHeaderBar2(option));
-
             writer.AppendHtmlLine($"<table{idTable}{cssTable}>");
 
             if (option.ShowHeader)
