@@ -299,6 +299,7 @@ namespace Buran.Core.MvcLibrary.Extenders
 $(function () {{
     $(""#{htmlId}"").select2({{
         language: ""tr"",
+        theme: ""bootstrap-5"",
         placeholder: ""{(PlaceHolderText.IsEmpty() ? "" : PlaceHolderText)}"",
         {(MultiSelect ? "multiple:true," : "")}
         {(Tag ? "tags:true," : "")}
