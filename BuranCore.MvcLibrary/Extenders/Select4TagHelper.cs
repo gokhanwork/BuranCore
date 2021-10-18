@@ -198,6 +198,7 @@ namespace Buran.Core.MvcLibrary.Extenders
                 : $@"<script type=""text/javascript"">
 $(function () {{
     $(""#{htmlId}"").select2({{
+        theme: ""bootstrap-5"",
         placeholder: ""{PlaceHolderText}"",
         language: ""tr"",
         {(CanClearSelect ? "allowClear: true, " : "")}
