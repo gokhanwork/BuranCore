@@ -357,7 +357,10 @@ namespace Buran.Core.MvcLibrary.Grid
                         action += "?";
                     action += "grid=" + option.GridDiv;
                 }
-                builder.AppendHtml($"<a href='{action}' class='{buttonClass}'><span class='fa fa-search'></span></a>");
+                var target = "";
+                if (option.ButtonShowOpenNew)
+                    target = "target='_blank'";
+                builder.AppendHtml($"<a href='{action}' class='{buttonClass}' {target}><span class='fa fa-search'></span></a>");
             }
             if (option.ButtonEditEnabled)
             {
