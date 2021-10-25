@@ -54,6 +54,7 @@ namespace Buran.Core.MvcLibrary.Grid
             ButtonInsertCss = "btn btn-xs text-create";
             ButtonInsertPopupCss = ButtonInsertCss + " " + popupEditorCss;
 
+            ButtonShowOpenNew = false;
             ButtonShowEnabled = false;
             ButtonShowAction = "show";
             ButtonShowCss = "btn btn-xs blue-steel";
@@ -121,6 +122,7 @@ namespace Buran.Core.MvcLibrary.Grid
         public string ButtonDeleteAction { get; set; }
         public string ButtonDeleteCss { get; set; }
 
+        public bool ButtonShowOpenNew { get; set; }
         public bool ButtonShowEnabled { get; set; }
         public string ButtonShowAction { get; set; }
         public string ButtonShowCss { get; set; }

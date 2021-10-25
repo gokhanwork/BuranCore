@@ -46,6 +46,7 @@ namespace Buran.Core.MvcLibrary.Grid4
             ButtonInsertCss = "btn btn-sm btn-link";
             ButtonInsertPopupCss = ButtonInsertCss + " " + popupEditorCss;
 
+            ButtonShowOpenNew = false;
             ButtonShowEnabled = false;
             ButtonShowAction = "show";
             ButtonShowCss = "btn btn-sm btn-default";
@@ -112,6 +113,7 @@ namespace Buran.Core.MvcLibrary.Grid4
         public string ButtonDeleteAction { get; set; }
         public string ButtonDeleteCss { get; set; }
 
+        public bool ButtonShowOpenNew { get; set; }
         public bool ButtonShowEnabled { get; set; }
         public string ButtonShowAction { get; set; }
         public string ButtonShowCss { get; set; }

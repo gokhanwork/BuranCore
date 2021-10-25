@@ -384,7 +384,10 @@ namespace Buran.Core.MvcLibrary.Grid4
                         action += "?";
                     action += "grid=" + option.GridDiv;
                 }
-                builder.AppendHtml($"<a href='{action}' class='{buttonClass}'><i class='fas fa-search'></i></a>");
+                var target = "";
+                if (option.ButtonShowOpenNew)
+                    target = "target='_blank'";
+                builder.AppendHtml($"<a href='{action}' class='{buttonClass}' {target}><i class='fas fa-search'></i></a>");
             }
             if (option.ButtonEditEnabled)
             {
