@@ -132,7 +132,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel
 
 
 
-        public static HtmlString PageMenu2(this IHtmlHelper helper, EditorPageMenu menu, string cssClass = "navbar-nav ms-auto navbar-toolbar")
+        public static HtmlString PageMenu2(this IHtmlHelper helper, EditorPageMenu menu, string cssClass = "navbar-nav mr-auto navbar-toolbar")
         {
             if (menu.Items.Count == 0)
                 return new HtmlString(string.Empty);
@@ -170,7 +170,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel
                         item.ButtonClass = "btn btn-primary btn-sm";
 
                     sb.AppendLine($@"<li class='nav-item dropdown'>
-        <a class='dropdown-toggle {item.ButtonClass} {item.ButtonIdClass}' href='#' data-bs-toggle='dropdown'>
+        <a class='dropdown-toggle {item.ButtonClass} {item.ButtonIdClass}' href='#' data-toggle='dropdown'>
             <i class='{item.IconClass}'></i>&nbsp;{item.Title}
         </a>
         <div class='dropdown-menu'>");
@@ -202,7 +202,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel
                     sb.AppendLine($@"<li class='nav-item dropdown'>
 <div class='btn-group'>
         {btnText}
-        <button type='button' class='{item.ButtonClass} dropdown-toggle dropdown-toggle-split' data-bs-toggle='dropdown'>
+        <button type='button' class='{item.ButtonClass} dropdown-toggle dropdown-toggle-split' data-toggle='dropdown'>
             <span class='sr-only'>Toggle Dropdown</span>
         </button>
         <div class='dropdown-menu'>");
@@ -248,7 +248,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel
                     if (item.ButtonClass.IsEmpty())
                         item.ButtonClass = "btn btn-primary btn-sm";
 
-                    sb.AppendLine($@"<a class='dropdown-toggle {item.ButtonClass}' href='#' data-bs-toggle='dropdown'>
+                    sb.AppendLine($@"<a class='dropdown-toggle {item.ButtonClass}' href='#' data-toggle='dropdown'>
             <i class='{item.IconClass}'></i>&nbsp;{item.Title}
         </a>
         <div class='dropdown-menu'>");
@@ -279,7 +279,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel
 
                     sb.AppendLine($@"<div class='btn-group'>
         {btnText}
-        <button type='button' class='{item.ButtonClass} dropdown-toggle dropdown-toggle-split' data-bs-toggle='dropdown'>
+        <button type='button' class='{item.ButtonClass} dropdown-toggle dropdown-toggle-split' data-toggle='dropdown'>
             <span class='sr-only'>Toggle Dropdown</span>
         </button>
         <div class='dropdown-menu'>");
