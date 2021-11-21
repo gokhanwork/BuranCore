@@ -271,10 +271,9 @@ namespace Buran.Core.Library.Utils
             foreach (var c in cList)
             {
                 int.TryParse(c, out int ci);
-                if (ci > 0)
-                    list.Add(ci);
+                list.Add(ci);
             }
-            return list;
+            return list.Distinct().ToList();
         }
     }
 }
