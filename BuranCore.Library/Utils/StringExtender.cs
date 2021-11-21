@@ -267,6 +267,8 @@ namespace Buran.Core.Library.Utils
             if (query.IsEmpty())
                 return list;
 
+            if (query == "null")
+                query = "";
             var cList = query.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var c in cList)
             {
