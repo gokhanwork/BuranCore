@@ -303,12 +303,5 @@ namespace Buran.Core.MvcLibrary.Extenders
 
 
         }
-
-        private string GetRefreshUrl(IHtmlHelper helper, DataGridOptions option)
-        {
-            var baseUrl = LibGeneral.GetContentUrl(helper.ViewContext.RouteData);
-            var fs = $@"/{baseUrl}/{option.PagerAndShortAction}{_queryParams}";
-            return $"{option.PagerJsFunction}(\"{fs}\",\"{option.GridDiv}\");";
-        }
     }
 }

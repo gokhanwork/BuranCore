@@ -179,9 +179,14 @@ namespace Buran.Core.Library.Http
 
 
 
-        public string GetJsonBasicAuth(string url, string userName, string password = "")
+        public string GetJsonBasicAuth(string url, string userName, string password = "", Dictionary<string, string> headerData = null)
         {
             var client = GetBasicClient(userName, password);
+            if (headerData != null && headerData.Count > 0)
+            {
+                foreach (var hd in headerData)
+                    client.DefaultRequestHeaders.Add(hd.Key, hd.Value);
+            }
             var response = client.GetAsync(url).Result;
             return response.Content.ReadAsStringAsync().Result;
         }
