@@ -25,6 +25,23 @@ namespace Buran.Core.Library.Utils
             return value.ToString("N" + decimalPart, new NumberFormatInfo { NumberDecimalSeparator = ".", NumberGroupSeparator = "" });
         }
 
+        public static string ToCleanText2(this decimal value, bool clearZero=true)
+        {
+            var decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            var t = value.ToString("N2");
+            if (clearZero)
+                t = t.Replace(decimalSeparator + "00", "");
+            return t;
+        }
+        public static string ToCleanText4(this decimal value, bool clearZero = true)
+        {
+            var decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            var t = value.ToString("N4");
+            if (clearZero)
+                t = t.Replace(decimalSeparator + "0000", "");
+            return t;
+        }
+
         public static string ToText(this decimal value)
         {
             return value.ToString("N2");
