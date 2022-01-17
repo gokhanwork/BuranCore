@@ -190,6 +190,11 @@ namespace Buran.Core.MvcLibrary.AdminPanel.Controllers
                 var rsm = ResourceMan.GetString(r);
                 return (rsm.IsEmpty() ? r : rsm) + suffixName;
             }
+            else
+            {
+                var rsm = XmlLangHtmlExtender.L(r);
+                return (rsm.IsEmpty() ? r : rsm) + suffixName;
+            }
             return string.Empty;
         }
 
