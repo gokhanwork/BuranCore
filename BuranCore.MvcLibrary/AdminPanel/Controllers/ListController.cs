@@ -5,6 +5,7 @@ using Buran.Core.MvcLibrary.LogUtil;
 using Buran.Core.MvcLibrary.Repository;
 using Buran.Core.MvcLibrary.Resource;
 using Buran.Core.MvcLibrary.Utils;
+using Buran.Core.MvcLibrary.XmlLang;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
