@@ -124,7 +124,7 @@
     <value>Passwort ändern</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Nah dran</value>
+    <value>Abbrechen</value>
   </data>
   <data name="ConfirmDelete" xml:space="preserve">
     <value>Möchten Sie diesen Datensatz wirklich löschen?</value>
