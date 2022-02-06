@@ -179,7 +179,7 @@ namespace Buran.Core.MvcLibrary.Extenders
             var htmlName = prefix.IsEmpty() ? ModelItem.Metadata.PropertyName : prefix + "." + ModelItem.Metadata.PropertyName;
             var labelText = ModelItem.Metadata.DisplayName ?? ModelItem.Metadata.PropertyName ?? htmlId.Split('.').Last();
 
-            if (ItemList == null)
+            if (ItemList == null && ItemList2 == null)
             {
                 var comboDataInfo = GetComboBoxDataSource(ModelItem.ModelExplorer);
                 ItemList = comboDataInfo.ListItems;

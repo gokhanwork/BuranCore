@@ -83,7 +83,7 @@ namespace Buran.Core.MvcLibrary.Extenders
             output.TagMode = TagMode.StartTagAndEndTag;
             output.Attributes.Add("class", "input-group-btn");
 
-            if (ItemList == null)
+            if (ItemList == null && ItemList2 == null)
             {
                 var comboDataInfo = GetComboBoxDataSource(ModelItem.ModelExplorer);
                 ItemList = comboDataInfo.ListItems;
