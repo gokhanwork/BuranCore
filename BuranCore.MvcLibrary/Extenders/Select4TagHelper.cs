@@ -17,18 +17,6 @@ namespace Buran.Core.MvcLibrary.Extenders
         [HtmlAttributeName("brn-field")]
         public ModelExpression ModelItem { get; set; }
 
-        ///// <summary>
-        ///// Model bind etmeden, alan adını manuel belirler
-        ///// </summary>
-        //[HtmlAttributeName("brn-fieldname")]
-        //public string FieldName { get; set; }
-
-        ///// <summary>
-        ///// FieldName kullanıldığı zaman label bilgisini belirler
-        ///// </summary>
-        //[HtmlAttributeName("brn-labeltext")]
-        //public string LabelText { get; set; }
-
         /// <summary>
         /// MultiSelect aktif iken seçili gelecek bilgiler
         /// </summary>
@@ -100,6 +88,12 @@ namespace Buran.Core.MvcLibrary.Extenders
         /// </summary>
         [HtmlAttributeName("brn-add-new-url")]
         public string AddNewUrl { get; set; }
+
+        /// <summary>
+        /// select bilgisine css class eklemek için kullanılır
+        /// </summary>
+        [HtmlAttributeName("brn-addnewbutton-cssclass")]
+        public string AddNewButtonCssClass { get; set; }
 
         /// <summary>
         /// bootstrap template için label col büyüklüğü
@@ -238,7 +232,7 @@ $(function () {{
     <select id='{htmlId}' name='{htmlName}' class='form-control form-control-sm {CssClass}' {valHtml}>
     </select>
     <div class=""input-group-append"">
-        <a href='{AddNewUrl}' class='btn btn-sm btn-default btnAddPopup fancyboxAdd fancybox.iframe'><i class='fas fa-plus'></i></a>
+        <a href='{AddNewUrl}' class='btn btn-sm btn-default btnAddPopup fancyboxAdd fancybox.iframe {AddNewButtonCssClass}'><i class='fas fa-plus'></i></a>
     </div>
     {js}
 </div>");
@@ -275,7 +269,7 @@ $(function () {{
         <select id='{htmlId}' name='{htmlName}' class='form-control form-control-sm {CssClass}' {valHtml}>
         </select>
         <div class=""input-group-append"">
-            <a href='{AddNewUrl}' class='btn btn-sm btn-default btnAddPopup fancyboxAdd fancybox.iframe'><i class='fas fa-plus'></i></a>
+            <a href='{AddNewUrl}' class='btn btn-sm btn-default btnAddPopup fancyboxAdd fancybox.iframe {AddNewButtonCssClass}'><i class='fas fa-plus'></i></a>
         </div>
     </div>
     {metaHtml}
