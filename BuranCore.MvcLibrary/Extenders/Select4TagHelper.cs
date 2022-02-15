@@ -16,6 +16,11 @@ namespace Buran.Core.MvcLibrary.Extenders
         /// </summary>
         [HtmlAttributeName("brn-field")]
         public ModelExpression ModelItem { get; set; }
+        /// <summary>
+        /// Parent alan adı
+        /// </summary>
+        [HtmlAttributeName("brn-parent-field")]
+        public ModelExpression ModelParentItem { get; set; }
 
         /// <summary>
         /// MultiSelect aktif iken seçili gelecek bilgiler
@@ -156,6 +161,12 @@ namespace Buran.Core.MvcLibrary.Extenders
             var prefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
             var htmlId = prefix.IsEmpty() ? ModelItem.Metadata.PropertyName : _htmlHelper.IdForModel() + "_" + ModelItem.Metadata.PropertyName;
             var htmlName = prefix.IsEmpty() ? ModelItem.Metadata.PropertyName : prefix + "." + ModelItem.Metadata.PropertyName;
+            if (ModelParentItem!=null)
+            {
+                var parentHtmlId = prefix.IsEmpty() ? ModelParentItem.Metadata.PropertyName : _htmlHelper.IdForModel() + "_" + ModelParentItem.Metadata.PropertyName;
+                ParentComboBox = parentHtmlId;
+            }
+           
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
