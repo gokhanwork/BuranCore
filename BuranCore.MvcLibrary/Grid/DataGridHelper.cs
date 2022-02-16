@@ -410,7 +410,7 @@ namespace Buran.Core.MvcLibrary.Grid
                 if (drawDeleteButton)
                 {
                     var url = $@"/{LibGeneral.GetContentUrl(helper.ViewContext.RouteData)}/{option.ButtonDeleteAction}";
-                    if (option.ButtonEditAction.Contains("?"))
+                    if (option.ButtonDeleteAction.Contains("?"))
                         url += $"&{option.KeyField}={keyFieldValue}";
                     else
                         url += $"/{keyFieldValue}";
