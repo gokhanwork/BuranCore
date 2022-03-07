@@ -351,7 +351,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel.Controllers2
                 int.TryParse(v.ToString(), out _editId);
                 if (_editId > 0)
                 {
-                    var org = await Repo.GetItemAsync(_editId);
+                    var org = await GetEditSaveItem(_editId);
                     await TryUpdateModelAsync(org);
                     if (OnEditSaveCheck(org))
                     {
