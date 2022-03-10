@@ -46,4 +46,7 @@
 			<Generator>ResXFileCodeGenerator</Generator>
 		</EmbeddedResource>
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\BuranCore.Library\Buran.Core.Library.csproj" />
+	</ItemGroup>
 </Project>
