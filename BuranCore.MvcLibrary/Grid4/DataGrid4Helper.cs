@@ -533,7 +533,7 @@ namespace Buran.Core.MvcLibrary.Grid4
                 if (field.CellStyleBackFormatter != null && !field.CellBackStyleClassFunc.IsEmpty())
                 {
                     var obj = Activator.CreateInstance(field.CellStyleBackFormatter);
-                    var a = field.CellBackFormatter.GetMethod(field.CellBackStyleClassFunc);
+                    var a = field.CellStyleBackFormatter.GetMethod(field.CellBackStyleClassFunc);
                     var sonuc = (string)a.Invoke(obj, new dynamic[1] { item });
                     if (!cssStyle.IsEmpty())
                         cssStyle += " ";
