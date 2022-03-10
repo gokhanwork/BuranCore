@@ -528,6 +528,20 @@ namespace Buran.Core.MvcLibrary.Grid4
                 }
                 if (!cssClass.IsEmpty())
                     attr += $" class='{cssClass}'";
+
+                var cssStyle = field.CellCssStyle;
+                if (field.CellStyleBackFormatter != null && !field.CellBackStyleClassFunc.IsEmpty())
+                {
+                    var obj = Activator.CreateInstance(field.CellStyleBackFormatter);
+                    var a = field.CellBackFormatter.GetMethod(field.CellBackStyleClassFunc);
+                    var sonuc = (string)a.Invoke(obj, new dynamic[1] { item });
+                    if (!cssStyle.IsEmpty())
+                        cssStyle += " ";
+                    cssStyle += sonuc;
+                }
+                if (!cssStyle.IsEmpty())
+                    attr += $" style='{cssStyle}'";
+
                 builder.AppendHtml($"<td{attr}>");
 
                 if (field.ObjectValueFunction.IsEmpty() || field.ObjectValueConverter == null)

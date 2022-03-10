@@ -37,8 +37,6 @@ namespace Buran.Core.MvcLibrary.Grid.Columns
 
         public string HeaderCssClass { get; set; }
 
-        public string CellCssClass { get; set; }
-
         public string FieldName { get; set; }
 
         public string Caption { get; set; }
@@ -68,8 +66,13 @@ namespace Buran.Core.MvcLibrary.Grid.Columns
         public string DataFormat { get; set; }
 
 
-
+        public string CellCssClass { get; set; }
         public string CellBackCssClassFunc { get; set; }
         public Type CellBackFormatter { get; set; }
+
+
+        public string CellCssStyle { get; set; }
+        public string CellBackStyleClassFunc { get; set; }
+        public Type CellStyleBackFormatter { get; set; }
     }
 }
