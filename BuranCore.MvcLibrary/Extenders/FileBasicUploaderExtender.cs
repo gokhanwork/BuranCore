@@ -1,4 +1,5 @@
-﻿using Buran.Core.MvcLibrary.Resource;
+﻿using Buran.Core.Library.Utils;
+using Buran.Core.MvcLibrary.Resource;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -8,10 +9,12 @@ namespace Buran.Core.MvcLibrary.Extenders
     {
         public static HtmlString FileBasicUploader(this IHtmlHelper html, string name, string title, string uploadUrl,
             string cssClass = "btnFileUploader", bool showImg = false, string imgPath = null,
-            int labelCol = 3, int editorCol = 9, bool template = true, bool multiple=false,
-            string cssClassFile = "fileinput")
+            int labelCol = 3, int editorCol = 9, bool template = true, bool multiple = false,
+            string cssClassFile = "fileinput", string buttonText = "")
         {
             var multipleProp = multiple ? "multiple" : "";
+            if (buttonText.IsEmpty())
+                buttonText = UI.Upload;
             var img = showImg ? $"<img id='img{name}' src='{imgPath}' class='img-thumbnail img-fileupload'><br>" : "";
             if (template)
             {
@@ -20,7 +23,7 @@ namespace Buran.Core.MvcLibrary.Extenders
                 <div class='col-{editorCol}'>
                    {img}
                     <button type='button' class='{cssClass} btn btn-sm btn-default' id='btn{name}'>
-                        <i class='fa fa-upload'></i> {UI.Upload}
+                        <i class='fa fa-upload'></i> {buttonText}
                     </button>
                     <input id='file{name}' type='file' name='file{name}' class='{cssClassFile} d-none' data-url='{uploadUrl}' {multipleProp}>
                 </div>
