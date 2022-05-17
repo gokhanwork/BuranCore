@@ -78,7 +78,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel.Controllers2
             if (item == null)
                 return NotFound();
             if (!OnShowCheck(item))
-                return NotFound();
+                return new ForbidResult();
 
             var _queryDictionary = QueryHelpers.ParseQuery(Request.QueryString.ToString());
             var _queryItems = _queryDictionary.SelectMany(x => x.Value, (col, value) => new KeyValuePair<string, string>(col.Key, value)).ToList();
@@ -245,7 +245,7 @@ namespace Buran.Core.MvcLibrary.AdminPanel.Controllers2
                 return NotFound();
 
             if (!OnEditCheck(item))
-                return NotFound();
+                return new ForbidResult();
 
             var _queryDictionary = QueryHelpers.ParseQuery(Request.QueryString.ToString());
             var _queryItems = _queryDictionary.SelectMany(x => x.Value, (col, value) => new KeyValuePair<string, string>(col.Key, value)).ToList();
