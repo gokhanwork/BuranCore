@@ -22,7 +22,7 @@ namespace Buran.Core.MvcLibrary.Utils
                 var a2 = a[1].Substring(1);
                 var a3 = a2.Split('<');
                 var a4 = a3[0];
-                return a4 + " (" + GetIp(request) + ")";
+                return a4; // + " (" + GetIp(request) + ")";
             }
             catch (Exception)
             {
