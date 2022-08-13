@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Buran.Core.MvcLibrary.Cache
 {
-    public static class CacheManager
+    public static class DistCacheManager
     {
         public static async Task SetAsync<T>(IDistributedCache cache, string key, T value)
         {

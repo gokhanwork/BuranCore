@@ -6,12 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
+
 namespace Buran.Core.MvcLibrary.Cache
 {
-    public class CacheService : ICacheService
+    public class MemoryCacheService : IMemoryCacheService
     {
         protected readonly IMemoryCache _memoryCache;
-        public CacheService(IMemoryCache memoryCache)
+
+        public MemoryCacheService(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
         }
@@ -66,6 +68,7 @@ namespace Buran.Core.MvcLibrary.Cache
             DeleteCache<T>();
             Load(list);
         }
+
         public void Update<T>(T item) where T : class
         {
             RemoveItem(item);
