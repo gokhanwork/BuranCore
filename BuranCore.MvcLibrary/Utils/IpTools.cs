@@ -1,6 +1,9 @@
 ﻿using Buran.Core.Library.Http;
+using Buran.Core.Library.Utils;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 using System;
+using System.Linq;
 
 namespace Buran.Core.MvcLibrary.Utils
 {
@@ -8,8 +11,18 @@ namespace Buran.Core.MvcLibrary.Utils
     {
         public string GetIp(HttpRequest request)
         {
-            var ip = request.HttpContext.Connection.RemoteIpAddress;
-            return ip.ToString();
+            var result = string.Empty;
+            if (request.Headers != null)
+            {
+                var forwardedHeader = request.Headers["X-Forwarded-For"];
+                if (!StringValues.IsNullOrEmpty(forwardedHeader))
+                    result = forwardedHeader.FirstOrDefault();
+            }
+            if (result.IsEmpty() && request.HttpContext.Connection.RemoteIpAddress != null)
+                result = request.HttpContext.Connection.RemoteIpAddress.ToString();
+            return result;
+            //var ip = request.HttpContext.Connection.RemoteIpAddress;
+            //return ip.ToString();
         }
 
         public string GetRealIp(HttpRequest request)
