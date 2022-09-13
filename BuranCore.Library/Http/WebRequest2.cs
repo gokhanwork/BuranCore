@@ -41,6 +41,8 @@ namespace Buran.Core.Library.Http
             return response.Content.ReadAsStringAsync().Result;
         }
 
+       
+
         public string PostData2(string url, string postData)
         {
             var byteArray = Encoding.UTF8.GetBytes(postData);
@@ -69,6 +71,14 @@ namespace Buran.Core.Library.Http
         }
 
 
+        public string PostString(string url, string data, string authorizationToken = null, string authorizationSchema = "Bearer")
+        {
+            var client = GetClient(authorizationToken, authorizationSchema);
+            var content = new StringContent(data, Encoding.UTF8);
+            var response = client.PostAsync(url, content).Result;
+            return response.Content.ReadAsStringAsync().Result;
+        }
+
 
         public string PostForm(string url, Dictionary<string, string> data,
             string authorizationToken = null, string authorizationSchema = "Bearer")
@@ -78,6 +88,7 @@ namespace Buran.Core.Library.Http
             var response = client.PostAsync(url, content).Result;
             return response.Content.ReadAsStringAsync().Result;
         }
+
 
         public string PostJson(string url, string data,
            string authorizationToken = null, string authorizationSchema = "Bearer",

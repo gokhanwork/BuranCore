@@ -1,4 +1,5 @@
-﻿using Buran.Core.Library.LogUtil;
+﻿using Buran.Core.Library.Http;
+using Buran.Core.Library.LogUtil;
 using System;
 using System.IO;
 using System.Net;
@@ -30,7 +31,6 @@ namespace Buran.Core.Library.Notification.Sms
         {
             try
             {
-                var apiAdres = "https://api.netgsm.com.tr/sms/send/xml";
                 var xmlData = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
 <mainbody>
     <header>
@@ -45,25 +45,10 @@ namespace Buran.Core.Library.Notification.Sms
         <no>{toPhone}</no>
     </body>
 </mainbody>";
+                var client = new WebRequest2();
+                var response = client.PostString("https://api.netgsm.com.tr/sms/send/xml", xmlData);
 
-                var request = WebRequest.Create(apiAdres);
-                request.Method = "POST";
-                var byteArray = Encoding.UTF8.GetBytes(xmlData);
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.ContentLength = byteArray.Length;
-                var dataStream = request.GetRequestStream();
-                dataStream.Write(byteArray, 0, byteArray.Length);
-                dataStream.Close();
-
-                var response = request.GetResponse();
-                dataStream = response.GetResponseStream();
-                var reader = new StreamReader(dataStream);
-                var responseFromServer = reader.ReadToEnd();
-                reader.Close();
-                dataStream.Close();
-                response.Close();
-
-                var ss = responseFromServer.Split(' ');
+                var ss = response.Split(' ');
                 var res = new NetgsmResponse();
                 if (ss.Length <= 2)
                 {
